@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <title>中药品列表</title>
+</head>
+<body>
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div style="text-align: center"><h1>中药品列表</h1></div>
+            <div class="col-md-12 column">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                    <tr>
+                        <th>助记代码</th>
+                        <th>中药名称</th>
+                        <th>单价</th>
+                        <th>单位</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="medicines:${medicineList}">
+                        <td th:text="${medicines.mnemonicCode}"></td>
+                        <td th:text="${medicines.medicineName}"></td>
+                        <td th:text="${medicines.unitPrice}"></td>
+                        <td th:text="${medicines.unit}"></td>
+                        <td>详情</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+</body>
+</html>

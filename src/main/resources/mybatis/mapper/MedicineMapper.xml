@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prescription.prescriptionmanage.prescription.dao.MedicineMapper">
+    <resultMap id="BaseResultMap" type="com.prescription.prescriptionmanage.prescription.entity.Medicine">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="mnemoniccode" jdbcType="VARCHAR" property="mnemonicCode" />
+        <result column="medicinename" jdbcType="VARCHAR" property="medicineName" />
+        <result column="unit" jdbcType="VARCHAR" property="unit" />
+        <result column="unitprice" jdbcType="VARCHAR" property="unitPrice" />
+        <result column="note" jdbcType="VARCHAR" property="note" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      id, mnemoniccode, medicinename, unit, unitprice, note
+    </sql>
+
+    <!-- 药品列表查询 -->
+    <select id="queryAllMedicine" resultMap="BaseResultMap">
+       select
+       <include refid="Base_Column_List"/>
+       from drugdetails
+
+    </select>
+
+    <!--插入药品信息 -->
+    <insert id="insert" parameterType="com.prescription.prescriptionmanage.prescription.entity.Medicine">
+        insert into drugdetails(id,mnemoniccode,medicinename,unit,unitprice,note) values(#{id},#{mnemoniccode},#{medicinename},#{unit},#{unitprice},#{note})
+    </insert>
+
+    <select id="getById" parameterType="java.lang.Integer" resultType="com.prescription.prescriptionmanage.prescription.entity.Medicine">
+       select id,mnemoniccode,medicinename,unit,unitprice,note from drugdetails where id = #{id}
+    </select>
+
+    <update id="update" parameterType="com.prescription.prescriptionmanage.prescription.entity.Medicine">
+        update drugdetails set medicinename = #{medicinename} where id = #{id}
+    </update>
+
+</mapper>
+
